@@ -1,0 +1,33 @@
+import random
+
+def pierre_papier_ciseaux():
+    options = ["pierre", "papier", "ciseaux"]
+
+    print("Bienvenue dans le jeu Pierre-Papier-Ciseaux !")
+    print("Choisis entre : pierre, papier, ciseaux")
+
+    # Demander à l'utilisateur de faire un choix
+    choix_utilisateur = input("Ton choix: ").lower()
+
+    # Vérifier que le choix est valide
+    if choix_utilisateur not in options:
+        print("Choix invalide ! Essaie encore avec pierre, papier ou ciseaux.")
+        return
+
+    # Choisir une option aléatoire pour l'ordinateur
+    choix_ordinateur = random.choice(options)
+
+    print(f"L'ordinateur a choisi : {choix_ordinateur}")
+
+    # Déterminer le gagnant
+    if choix_utilisateur == choix_ordinateur:
+        print("C'est une égalité gros naz !")
+    elif (choix_utilisateur == "pierre" and choix_ordinateur == "ciseaux") or \
+         (choix_utilisateur == "papier" and choix_ordinateur == "pierre") or \
+         (choix_utilisateur == "ciseaux" and choix_ordinateur == "papier"):
+        print("Tu as gagné ! 🎉")
+    else:
+        print("j'ai win gros naz !")
+
+# Lancer le jeu
+pierre_papier_ciseaux()
