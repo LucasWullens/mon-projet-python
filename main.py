@@ -1,25 +1,26 @@
-import time
-import os
-
-def clear_terminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-def bouncing_ball(width=40, delay=0.05):
-    position = 0
-    direction = 1  # 1 pour aller à droite, -1 pour aller à gauche
-
-    try:
-        while True:
-            clear_terminal()
-            print(' ' * position + '🪐')  # Remplace par un autre emoji si tu veux
-            time.sleep(delay)
-            
-            position += direction
-            if position == 0 or position == width:
-                direction *= -1  # Change de direction quand on touche les bords
-    except KeyboardInterrupt:
-        print("\nAnimation arrêtée. 🪐 Bye !")
-
-bouncing_ball()
-
-
+vie = 7
+mot_cacher = 'neuille'
+mot_reveler = "_" * len(mot_cacher)
+while mot_reveler != mot_cacher and vie > 0 : 
+  lettre = input("Donne t'as lettre : ")
+  
+  if len(lettre) > 1 :
+    print("donne que une seule lettre  ! ")
+  
+  if lettre in mot_cacher: 
+      for i in range(len(mot_cacher)):
+        if mot_cacher[i] == lettre:
+          mot_reveler = mot_reveler[:i] + lettre + mot_reveler[i + 1:]
+  else:
+    vie = vie - 1 
+    
+  if mot_reveler == mot_cacher:
+    print("Bravo tu a trouver le mot : ", mot_cacher)
+  elif vie == 0:
+    print("tu as perdu !  :(")
+  else:
+    print("votre mot est", mot_reveler)
+    print("nombre de vie : ", vie)
+  
+    
+  
