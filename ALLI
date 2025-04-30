@@ -1,0 +1,31 @@
+import random
+
+def deviner_nombre():
+    print("Bienvenue dans le jeu de devinette de nombres!")
+    print("Je pense à un nombre entre 1 et 100.")
+    
+    # L'ordinateur choisit un nombre aléatoire entre 1 et 100
+    nombre_secret = random.randint(1, 100)
+    
+    tentatives = 0
+    while True:
+        try:
+            # Demande à l'utilisateur de deviner
+            guess = int(input("Devine quel est ce nombre: "))
+            tentatives += 1
+        except ValueError:
+            print("Ce n'est pas un nombre valide. Essaie encore!")
+            continue
+        
+        # Vérifie la réponse
+        if guess < nombre_secret:
+            print("Trop bas! Essaie encore.")
+        elif guess > nombre_secret:
+            print("Trop haut! Essaie encore.")
+        else:
+            print(f"Bravo! Le nombre était bien {nombre_secret}.")
+            print(f"Tu as deviné en {tentatives} tentatives.")
+            break
+
+# Lancer le jeu
+deviner_nombre()
